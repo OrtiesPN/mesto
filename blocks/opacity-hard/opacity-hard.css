@@ -1,0 +1,8 @@
+.opacity-hard{
+    opacity: 1;
+    transition: opacity .4s ease;
+}
+
+.opacity-hard:hover{
+    opacity: .5;
+}

@@ -1,0 +1,8 @@
+.opacity-medium{
+    opacity: 1;
+    transition: opacity .4s ease;
+}
+
+.opacity-medium:hover{
+    opacity: .6;
+}

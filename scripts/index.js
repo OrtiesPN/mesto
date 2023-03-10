@@ -10,6 +10,7 @@ const popupEditProfileElement = document.querySelector('.popup__edit-profile'); 
 let nameInput = popupEditProfileElement.querySelector('#name.popup__input'); // получаю элемент строки ввода имени из формы
 let jobInput = popupEditProfileElement.querySelector('#job.popup__input'); // получаю элемент строки ввода описания из формы
 console.log(popupEditProfileElement, nameInput.value, jobInput.value);
+
 const openPopup = function () { // функция открытия попапа, каждый вызов функции подставляет в строки ввода исходные значения из профиля
     popupElement.classList.add('popup_is-active');
     nameInput.value = profileName.textContent;
@@ -54,3 +55,5 @@ jobInput.addEventListener("click", clickJobInput);
 popupCloseButtonElement.addEventListener("click", closePopup);
 popupElement.addEventListener("click", closePopupByClickOverlay);
 popupEditProfileElement.addEventListener('submit', handleFormSubmit);
+
+
