@@ -3,115 +3,21 @@
 @import url(../blocks/page/page.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
+@import url(../blocks/main/main.css);
 @import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__container/profile__container.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
-
-
-.profile__container{
-    margin-top: 26px;
-}
-
-@media screen and (min-width: 720px){
-    .profile__container{
-        margin-top: 0;
-    }
-}
-
-@media screen and (min-width: 720px){
-    .profile__container{
-    margin-left: 30px;
-    }
-}
-
-.profile__title-container{
-    transform: translateX(14px); /*(Ширина кнопки+отступ)/2*/
-    display: flex;
-    align-items: baseline;
-}
-
-@media screen and (min-width: 720px){
-    .profile__title-container{
-        transform: translateX(0);
-    }
-}
-
-.profile__title{
-    margin: 0;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 27px;
-    line-height: 1.22;
-    text-align: center;
-}
-
-@media screen and (min-width: 720px){
-    .profile__title{
-        text-align: left;
-    }
-}
-
-
-
-.profile__edit-button {
-    margin-left: 10px;
-    width: 18px;
-    height: 18px;
-    box-sizing: border-box;
-    background-image: url(../images/edit-button.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    padding: 0;
-    border: 1px solid #fff;
-    font: inherit;
-    color: inherit;
-    background-color: transparent;
-    cursor: pointer;
-  }
-
-  @media screen and (min-width: 720px){
-    .profile__edit-button{
-        margin-left: 18px;
-    }
-}
-
-.profile__subtitle{
-    margin: 14px 0 0 0;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.2;
-    text-align: center;
-}
-
-@media screen and (min-width: 720px){
-    .profile__subtitle{
-        text-align: left;
-    }
-}
-
-.profile__add-button {
-    margin-top: 36px;
-    width: 282px;
-    height: 50px;
-    background-image: url(../images/add-button.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    padding: 0;
-    border: 2px solid #fff;
-    font: inherit;
-    color: inherit;
-    background-color: transparent;
-    cursor: pointer;
-  }
-
-  @media screen and (min-width: 720px){
-    .profile__add-button{
-        margin-top: 0;
-        width: 150px;
-        margin-right: 0;
-    }
-}
-
-.elemets{
-    padding-top: 36px;
-  }
+@import url(../blocks/profile/__title/profile__title.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__edit-button/profile__edit-button.css);
+@import url(../blocks/profile/__subtitle/profile__subtitle.css);
+@import url(../blocks/profile/__add-button/profile__add-button.css);
+@import url(../blocks/elements/elements.css);
+@import url(../blocks/cards/cards.css);
+@import url(../blocks/cards/__card/cards__card.css);
+@import url(../blocks/cards/__image/cards__image.css);
+@import url(../blocks/cards/__description/cards__description.css);
+@import url(../blocks/cards/__subtitle/cards__subtitle.css);
+@import url(../blocks/cards/__like-button/cards__like-button.css);
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
