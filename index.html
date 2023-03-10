@@ -75,15 +75,14 @@
         </footer>
     </div>
     <section class="popup">
-        <form class="popup__edit-profile" name="popupEditProfile">
+        <form class="popup__edit-profile">
             <button class="popup__close-button"></button>
             <h3 class="popup__title">Редактировать профиль</h3>
             <fieldset class="popup__inputs">
-                <input class="popup__input" type="text" placeholder="Имя">
-                <input class="popup__input" type="text" placeholder="О себе">
+                <input class="popup__input" type="text" placeholder="Имя" required>
+                <input class="popup__input" type="text" placeholder="О себе" required>
             </fieldset>
-            <button class="popup__submit">Сохранить</button>
-            
+            <button class="popup__submit" type="submit">Сохранить</button>
         </form>
     </section>
 </body>
