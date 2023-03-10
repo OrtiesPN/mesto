@@ -1,6 +1,7 @@
 .cards__like-button{
     width: 22px;
     height: 19px;
+    flex-shrink: 0;
     box-sizing: border-box;
     background-image: url(../../../images/like-icon.svg);
     background-size: 22px 19px;
@@ -12,5 +13,4 @@
     color: inherit;
     background-color: transparent;
     cursor: pointer;
-    align-self: baseline;
 }
