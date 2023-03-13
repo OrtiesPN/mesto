@@ -17,54 +17,54 @@
                     <img src="./images/Niki.jpg" alt="аватар пользователя" class="profile__avatar">
                     <div class="profile__title">
                         <h1 class="profile__name">Петухов Никита</h1>
-                        <button class="profile__edit-button opacity-medium"></button>
+                        <button class="button button__edit button_opacity-medium" type="button" aria-label="Редактировать профиль"></button>
                     </div>
                     <p class="profile__subtitle">Нажимает на кнопки</p>
                 </div>
-                <button class="profile__add-button opacity-medium"></button>
+                <button class="button button__add button_opacity-medium" type="button" aria-label="Добавить карточку"></button>
             </section>
             <section class="elements">
-                <ul class="cards">
-                    <li class="cards__card">
-                        <img src="./images/OctoberWalks-72.jpg" alt="Россия" class="cards__image">
-                        <div class="cards__description">
-                            <h2 class="cards__subtitle">Россия</h2>
-                            <button class="cards__like-button opacity-hard"></button>
+                <ul class="elements__cards">
+                    <li class="card">
+                        <img src="./images/OctoberWalks-72.jpg" alt="Россия" class="card__image">
+                        <div class="card__description">
+                            <h2 class="card__title">Россия</h2>
+                            <button class="button button__like button_opacity-hard" type="button" aria-label="Нравится!"></button>
                         </div>
                     </li>
-                    <li class="cards__card">
-                        <img src="./images/autumn_dull-9.jpg" alt="Москва" class="cards__image">
-                        <div class="cards__description">
-                            <h2 class="cards__subtitle">Москва</h2>
-                            <button class="cards__like-button opacity-hard"></button>
+                    <li class="card">
+                        <img src="./images/autumn_dull-9.jpg" alt="Москва" class="card__image">
+                        <div class="card__description">
+                            <h2 class="card__title">Москва</h2>
+                            <button class="button button__like button_opacity-hard" type="button" aria-label="Нравится!"></button>
                         </div>
                     </li>
-                    <li class="cards__card">
-                        <img src="./images/gele-1.jpg" alt="Краснодарский край" class="cards__image">
-                        <div class="cards__description">
-                            <h2 class="cards__subtitle">Краснодарский край</h2>
-                            <button class="cards__like-button opacity-hard"></button>
+                    <li class="card">
+                        <img src="./images/gele-1.jpg" alt="Краснодарский край" class="card__image">
+                        <div class="card__description">
+                            <h2 class="card__title">Краснодарский край</h2>
+                            <button class="button button__like button_opacity-hard" type="button" aria-label="Нравится!"></button>
                         </div>
                     </li>
-                    <li class="cards__card">
-                        <img src="./images/gele-187.jpg" alt="Геленджик" class="cards__image">
-                        <div class="cards__description">
-                            <h2 class="cards__subtitle">Геленджик</h2>
-                            <button class="cards__like-button opacity-hard"></button>
+                    <li class="card">
+                        <img src="./images/gele-187.jpg" alt="Геленджик" class="card__image">
+                        <div class="card__description">
+                            <h2 class="card__title">Геленджик</h2>
+                            <button class="button button__like button_opacity-hard" type="button" aria-label="Нравится!"></button>
                         </div>
                     </li>
-                    <li class="cards__card">
-                        <img src="./images/inland-142.jpg" alt="Шри-Ланка" class="cards__image">
-                        <div class="cards__description">
-                            <h2 class="cards__subtitle">Шри-Ланка</h2>
-                            <button class="cards__like-button opacity-hard"></button>
+                    <li class="card">
+                        <img src="./images/inland-142.jpg" alt="Шри-Ланка" class="card__image">
+                        <div class="card__description">
+                            <h2 class="card__title">Шри-Ланка</h2>
+                            <button class="button button__like button_opacity-hard" type="button" aria-label="Нравится!"></button>
                         </div>
                     </li>
-                    <li class="cards__card">
-                        <img src="./images/cool_surfers-7.jpg" alt="Серфинг" class="cards__image">
-                        <div class="cards__description">
-                            <h2 class="cards__subtitle">Серфинг</h2>
-                            <button class="cards__like-button opacity-hard"></button>
+                    <li class="card">
+                        <img src="./images/cool_surfers-7.jpg" alt="Серфинг" class="card__image">
+                        <div class="card__description">
+                            <h2 class="card__title">Серфинг</h2>
+                            <button class="button button__like button_opacity-hard" type="button" aria-label="Нравится!"></button>
                         </div>
                     </li>
                 </ul>
@@ -74,17 +74,19 @@
             <p class="footer__copyright">© 2020 Mesto Russia</p>
         </footer>
     </div>
-    <section class="popup">
-        <form class="popup__edit-profile">
-            <button class="popup__close-button opacity-medium"></button>
-            <h3 class="popup__title">Редактировать профиль</h3>
-            <fieldset class="popup__inputs">
-                <input class="popup__input" id="name" type="text" placeholder="Имя" required>
-                <input class="popup__input" id="job" type="text" placeholder="О себе" required>
-            </fieldset>
-            <button class="popup__submit  opacity-light" type="submit">Сохранить</button>
-        </form>
-    </section>
+    <div class="popup">
+        <div class="popup__container">
+            <button class="button button__close-popup button_opacity-medium" type="button" aria-label="Закрыть"></button>
+            <form class="popup__edit-profile" name="edit-profile">
+                <h3 class="popup__title">Редактировать профиль</h3>
+                <fieldset class="popup__inputs">
+                    <input class="popup__input" id="name" name="name_input" type="text" placeholder="Имя" required>
+                    <input class="popup__input" id="job" name="job_input" type="text" placeholder="О себе" required>
+                </fieldset>
+                <button class="button button__submit-profile button_opacity-light" type="submit" aria-labelledby="Сохранить">Сохранить</button>
+            </form>
+        </div>
+    </div>
     <script src="./scripts/index.js"></script>
 </body>
 </html>

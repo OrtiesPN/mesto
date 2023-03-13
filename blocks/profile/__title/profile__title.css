@@ -7,6 +7,6 @@
 @media screen and (min-width: 760px){
     .profile__title{
         transform: translateX(0);
-        align-self: center;
+        align-self: flex-end;
     }
 }

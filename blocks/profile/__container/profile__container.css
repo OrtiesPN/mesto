@@ -4,6 +4,7 @@
     'avatar'
     'title'
     'subtitle';
+    justify-items: center;
 }
 
 
@@ -13,5 +14,6 @@
     'avatar title'
     'avatar subtitle';
     column-gap: 30px;
+    justify-items: left;
     }
 }
