@@ -1,6 +1,6 @@
-const ButtonEditProfileElement = document.querySelector('.button__edit'); // получаю элемент кнопки редактирования
+const ButtonEditProfileElement = document.querySelector('.profile__edit-btn'); // получаю элемент кнопки редактирования
 const popupElement = document.querySelector('.popup'); // получаю элемент секции попап
-const popupCloseButtonElement = document.querySelector('.button__close-popup'); // получаю элемент кнопки закрытия попапа из секции попапа
+const popupCloseButtonElement = document.querySelector('.popup__close-btn'); // получаю элемент кнопки закрытия попапа из секции попапа
 let profileNameElement = document.querySelector('.profile__name'); // получаю элемент имени профиля
 let profileJobElement = document.querySelector('.profile__subtitle'); // получаю элемент описания профиля
 const popupEditProfileElement = document.querySelector('.popup__edit-profile'); // получаю элемент формы редактирования профиля

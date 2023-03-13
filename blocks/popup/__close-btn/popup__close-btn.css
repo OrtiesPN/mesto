@@ -1,4 +1,4 @@
-.button__close-popup{
+.popup__close-btn{
     position: absolute;
     top: -36px;
     right: 0;
@@ -9,7 +9,7 @@
 }
   
 @media screen and (min-width: 615px) {
-    .button__close-popup{
+    .popup__close-btn{
         top: -40px;
         right: -40px;
         width: 32px;
