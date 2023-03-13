@@ -8,6 +8,10 @@
     align-self: baseline;
 }
 
+.profile__edit-btn:hover{
+    opacity: .6;
+}
+
 @media screen and (min-width: 760px){
     .profile__edit-btn{
         margin-left: 18px;

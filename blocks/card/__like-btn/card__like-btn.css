@@ -4,3 +4,7 @@
     background-image: url(../../../images/like-icon.svg);
     background-size: 22px 19px;
 }
+
+.card__like-btn:hover {
+opacity: .5;
+}
