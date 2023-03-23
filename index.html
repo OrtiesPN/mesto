@@ -24,50 +24,7 @@
                 <button class="button profile__add-btn" type="button" aria-label="Добавить карточку"></button>
             </section>
             <section class="elements">
-                <ul class="elements__cards">
-                    <li class="card">
-                        <img src="./images/OctoberWalks-72.jpg" alt="Россия" class="card__image">
-                        <div class="card__description">
-                            <h2 class="card__title">Россия</h2>
-                            <button class="button card__like-btn" type="button" aria-label="Нравится!"></button>
-                        </div>
-                    </li>
-                    <li class="card">
-                        <img src="./images/autumn_dull-9.jpg" alt="Москва" class="card__image">
-                        <div class="card__description">
-                            <h2 class="card__title">Москва</h2>
-                            <button class="button card__like-btn" type="button" aria-label="Нравится!"></button>
-                        </div>
-                    </li>
-                    <li class="card">
-                        <img src="./images/gele-1.jpg" alt="Краснодарский край" class="card__image">
-                        <div class="card__description">
-                            <h2 class="card__title">Краснодарский край</h2>
-                            <button class="button card__like-btn" type="button" aria-label="Нравится!"></button>
-                        </div>
-                    </li>
-                    <li class="card">
-                        <img src="./images/gele-187.jpg" alt="Геленджик" class="card__image">
-                        <div class="card__description">
-                            <h2 class="card__title">Геленджик</h2>
-                            <button class="button card__like-btn" type="button" aria-label="Нравится!"></button>
-                        </div>
-                    </li>
-                    <li class="card">
-                        <img src="./images/inland-142.jpg" alt="Шри-Ланка" class="card__image">
-                        <div class="card__description">
-                            <h2 class="card__title">Шри-Ланка</h2>
-                            <button class="button card__like-btn" type="button" aria-label="Нравится!"></button>
-                        </div>
-                    </li>
-                    <li class="card">
-                        <img src="./images/cool_surfers-7.jpg" alt="Серфинг" class="card__image">
-                        <div class="card__description">
-                            <h2 class="card__title">Серфинг</h2>
-                            <button class="button card__like-btn" type="button" aria-label="Нравится!"></button>
-                        </div>
-                    </li>
-                </ul>
+                <ul class="elements__cards"></ul>
             </section>
         </main>
         <footer class="footer">
@@ -87,6 +44,15 @@
             </form>
         </div>
     </div>
+    <template class="card-template">
+        <li class="card">
+            <img src="" alt="" class="card__image">
+            <div class="card__description">
+                <h2 class="card__title"></h2>
+                <button class="button card__like-btn" type="button" aria-label="Нравится!"></button>
+            </div>
+        </li>
+    </template>
     <script src="./scripts/index.js"></script>
 </body>
 </html>

@@ -30,4 +30,41 @@ ButtonEditProfileElement.addEventListener("click", openPopup);
 popupCloseButtonElement.addEventListener("click", closePopup);
 popupEditProfileElement.addEventListener('submit', handleFormSubmit);
 
+const elements = document.querySelector('.elements__cards');
+const cardTemplate = document.querySelector('.card-template').content;
+const initialCards = [
+    {
+      name: 'Россия',
+      link: './images/OctoberWalks-72.jpg'
+    },
+    {
+      name: 'Москва',
+      link: './images/autumn_dull-9.jpg'
+    },
+    {
+      name: 'Краснодарский край',
+      link: './images/gele-1.jpg'
+    },
+    {
+      name: 'Геленджик',
+      link: './images/gele-187.jpg'
+    },
+    {
+      name: 'Шри-Ланка',
+      link: './images/inland-142.jpg'
+    },
+    {
+      name: 'Серфинг',
+      link: './images/cool_surfers-7.jpg'
+    }
+  ];
 
+  initialCards.forEach(addCard);
+
+  function addCard(card) {
+    const newCard = cardTemplate.cloneNode(true);
+    newCard.querySelector('.card__image').src = card.link;
+    newCard.querySelector('.card__title').textContent = card.name;
+    
+    elements.append(newCard);
+  }
