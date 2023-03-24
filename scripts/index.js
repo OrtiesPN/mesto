@@ -1,34 +1,63 @@
+
 const ButtonEditProfileElement = document.querySelector('.profile__edit-btn'); // получаю элемент кнопки редактирования
-const popupElement = document.querySelector('.popup'); // получаю элемент секции попап
-const popupCloseButtonElement = document.querySelector('.popup__close-btn'); // получаю элемент кнопки закрытия попапа из секции попапа
+const ButtonAddCardElement = document.querySelector('.profile__add-btn');
+const popupElement = document.querySelectorAll('.popup'); // получаю все элементы секции попап
+const editProfilePopup = document.querySelector('.edit-profile-popup');
+const addCardPopup = document.querySelector('.add-card-popup');
+const popupCloseButtons = document.querySelectorAll('.popup__close-btn'); // получаю все кнопки закрытия
 let profileNameElement = document.querySelector('.profile__name'); // получаю элемент имени профиля
 let profileJobElement = document.querySelector('.profile__subtitle'); // получаю элемент описания профиля
-const popupEditProfileElement = document.querySelector('.popup__edit-profile'); // получаю элемент формы редактирования профиля
+const popupEditProfileForm = document.getElementById('edit-profile-form'); // получаю элемент формы редактирования профиля
+const popupAddCardForm = document.getElementById('add-card-form');
 let nameInputElement = document.getElementById('name'); // получаю элемент строки ввода имени из формы
 let jobInputElement = document.getElementById('job'); // получаю элемент строки ввода описания из формы
+let placeInputElement = document.getElementById('place');
+let linkInputElement = document.getElementById('link');
 
-const openPopup = function () { // функция открытия попапа, каждый вызов функции подставляет в строки ввода исходные значения из профиля
-    popupElement.classList.add('popup_opened');
-    nameInputElement.value = profileNameElement.textContent;
-    jobInputElement.value = profileJobElement.textContent;
+const openPopup = (popupElement) => {
+  popupElement.classList.add('popup_opened');
+
 };
 
-const closePopup = function () { // функция закрытия попапа по крестику
-    popupElement.classList.remove('popup_opened');
+const openEditProfilePopup = function() {
+  nameInputElement.value = profileNameElement.textContent;
+  jobInputElement.value = profileJobElement.textContent;
+  openPopup(editProfilePopup);
+}
+
+const openAddCardPopup = function() {
+  openPopup(addCardPopup);
+}
+
+const closePopup = function (evt) { // функция закрытия попапа по крестику
+  const popupToClose = evt.target.closest('.popup');
+  popupToClose.classList.remove('popup_opened');
 };
 
-function handleFormSubmit (evt) {
+function handleEditProfileFormSubmit (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
     profileNameElement.textContent = nameInputElement.value; // подставляю в профиль значения из строк ввода
     profileJobElement.textContent = jobInputElement.value;
-    closePopup(); // закрываю попап
+    closePopup(evt); // закрываю попап
+}
+
+function handleAddCardFormSubmit (evt) {
+  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+  const newCard = {name: placeInputElement.value, link: linkInputElement.value};
+  addCard(newCard);
+  closePopup(evt); // закрываю попап
+  popupAddCardForm.reset();
+  
 }
 
 // Раздел с обработчиками событий
 
-ButtonEditProfileElement.addEventListener("click", openPopup);
-popupCloseButtonElement.addEventListener("click", closePopup);
-popupEditProfileElement.addEventListener('submit', handleFormSubmit);
+ButtonEditProfileElement.addEventListener("click", openEditProfilePopup);
+ButtonAddCardElement.addEventListener('click', openAddCardPopup);
+popupCloseButtons.forEach((popupCloseButton) => popupCloseButton.addEventListener("click", closePopup));
+popupEditProfileForm.addEventListener('submit', handleEditProfileFormSubmit);
+popupAddCardForm.addEventListener('submit', handleAddCardFormSubmit);
+// Раздел с логикой отображения и добавления карточек
 
 const elements = document.querySelector('.elements__cards');
 const cardTemplate = document.querySelector('.card-template').content;
@@ -64,7 +93,9 @@ const initialCards = [
   function addCard(card) {
     const newCard = cardTemplate.cloneNode(true);
     newCard.querySelector('.card__image').src = card.link;
+    newCard.querySelector('.card__image').alt = card.name;
     newCard.querySelector('.card__title').textContent = card.name;
+    
     
     elements.append(newCard);
   }

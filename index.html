@@ -31,10 +31,10 @@
             <p class="footer__copyright">© 2020 Mesto Russia</p>
         </footer>
     </div>
-    <div class="popup">
+    <div class="popup edit-profile-popup">
         <div class="popup__container">
             <button class="button popup__close-btn" type="button" aria-label="Закрыть"></button>
-            <form class="popup__edit-profile" name="edit-profile">
+            <form class="popup__form" id="edit-profile-form">
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <fieldset class="popup__inputs">
                     <input class="popup__input" id="name" name="name_input" type="text" placeholder="Имя" required>
@@ -44,6 +44,26 @@
             </form>
         </div>
     </div>
+    <div class="popup add-card-popup">
+        <div class="popup__container">
+            <button class="button popup__close-btn" type="button" aria-label="Закрыть"></button>
+            <form class="popup__form" id="add-card-form">
+                <h3 class="popup__title">Новое место</h3>
+                <fieldset class="popup__inputs">
+                    <input class="popup__input" id="place" name="place_input" type="text" placeholder="Название" required>
+                    <input class="popup__input" id="link" name="link_input" type="text" placeholder="Ссылка на картинку" required>
+                </fieldset>
+                <button class="button popup__submit-btn" type="submit" aria-labelledby="Создать">Создать</button>
+            </form>
+        </div>
+    </div>
+    <!--<div class="popup">
+        <figure class="popup-card">
+            <button class="button popup__close-btn" type="button" aria-label="Закрыть"></button>
+            <img class="popup-card__image" alt="" src="">
+            <figcaption class="popup-card__caption"></figcaption>
+        </figure>
+    </div>-->
     <template class="card-template">
         <li class="card">
             <img src="" alt="" class="card__image">
