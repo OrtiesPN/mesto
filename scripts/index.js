@@ -58,15 +58,14 @@ const handleAddCardFormSubmit = (evt) => {
   prependCard(newCard);
   closePopup(addCardPopup); 
   popupAddCardForm.reset();
-  
 }
 
 // Функции кнопок на карточках
 
-const openShowCardPopup = (evt) => {
-  showCardImage.src = evt.target.src;
-  showCardImage.alt = evt.target.alt;
-  showCardCaption.textContent = evt.target.alt;
+const openShowCardPopup = (card) => {
+  showCardImage.src = card.link;
+  showCardImage.alt = card.name;
+  showCardCaption.textContent = card.name;
   openPopup(imageCardPopup);
 }
 
@@ -93,24 +92,24 @@ const cardTemplate = document.querySelector('.card-template');
 
 initialCards.forEach(appendCard);
 
-function addCard(name, link) {
+function addCard(card) {
   const newCard = cardTemplate.content.cloneNode(true);
   const newCardImage = newCard.querySelector('.card__image');
-  newCardImage.src = link;
-  newCardImage.alt = name;
-  newCard.querySelector('.card__title').textContent = name;
-  newCardImage.addEventListener('click', openShowCardPopup);
+  newCardImage.src = card.link;
+  newCardImage.alt = card.name;
+  newCard.querySelector('.card__title').textContent = card.name;
+  newCardImage.addEventListener('click', () => openShowCardPopup(card));
   newCard.querySelector('.card__like-btn').addEventListener('click', toggleLike);
   newCard.querySelector('.card__delete-btn').addEventListener('click', deleteCard);
   return newCard;
 }
 
-function prependCard({name, link}) {
-  const newCard = addCard(name, link)
+function prependCard(card) {
+  const newCard = addCard(card)
   elements.prepend(newCard)
 }
 
-function appendCard({name, link}) {
-  const newCard = addCard(name, link)
+function appendCard(card) {
+  const newCard = addCard(card)
   elements.append(newCard);
 }
