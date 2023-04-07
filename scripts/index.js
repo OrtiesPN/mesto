@@ -1,3 +1,4 @@
+const popupList = document.querySelectorAll('.popup');
 const editProfilePopup = document.querySelector('.edit-profile-popup');
 const addCardPopup = document.querySelector('.add-card-popup');
 const imageCardPopup = document.querySelector('.image-card-popup');
@@ -28,6 +29,7 @@ function openPopup(popupElement) {
 const openEditProfilePopup = () => {
   nameInputElement.value = profileNameElement.textContent;
   jobInputElement.value = profileJobElement.textContent;
+  resetFormValidation(editProfilePopup);
   openPopup(editProfilePopup);
 }
 
@@ -42,6 +44,12 @@ const openAddCardPopup = () => {
 function closePopup(popupElement) {
   popupElement.classList.remove('popup_opened');
 };
+
+function closePopupByOverlay(evt) {
+  if (evt.target == evt.currentTarget) {
+    closePopup(evt.currentTarget);
+  };
+}
 
 // Функции обработки форм
 
@@ -82,6 +90,7 @@ const deleteCard = (evt) => {
 buttonEditProfileElement.addEventListener("click", openEditProfilePopup);
 buttonAddCardElement.addEventListener('click', openAddCardPopup);
 buttonsClose.forEach((close) => close.addEventListener("click", evt => closePopup( evt.target.closest('.popup'))));
+popupList.forEach((popup) => popup.addEventListener("click", closePopupByOverlay));
 popupEditProfileForm.addEventListener('submit', handleEditProfileFormSubmit);
 popupAddCardForm.addEventListener('submit', handleAddCardFormSubmit);
 

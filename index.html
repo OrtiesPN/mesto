@@ -6,6 +6,7 @@
     <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css">
     <script defer src="./scripts/constants.js"></script>
+    <script defer src="./scripts/validate.js"></script>
     <script defer src="./scripts/index.js"></script>
 </head>
 <body class="page">
@@ -36,11 +37,17 @@
     <div class="popup edit-profile-popup">
         <div class="popup__container">
             <button class="button popup__close-btn" type="button" aria-label="Закрыть"></button>
-            <form class="popup__form" id="edit-profile-form">
+            <form class="popup__form" id="edit-profile-form"  novalidate>
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <fieldset class="popup__inputs">
-                    <input class="popup__input" id="name" name="name_input" type="text" placeholder="Имя" required>
-                    <input class="popup__input" id="job" name="job_input" type="text" placeholder="О себе" required>
+                    <label>
+                        <input class="popup__input" id="name" name="name_input" type="text" minlength="2" maxlength="40" placeholder="Имя" required>
+                        <span class="popup__error" id="name-error"></span>
+                    </label>
+                    <label>
+                        <input class="popup__input" id="job" name="job_input" type="text" minlength="2" maxlength="200" placeholder="О себе" required >
+                        <span class="popup__error" id="job-error"></span>
+                    </label>
                 </fieldset>
                 <button class="button popup__submit-btn" type="submit" aria-labelledby="Сохранить">Сохранить</button>
             </form>
@@ -49,11 +56,17 @@
     <div class="popup add-card-popup">
         <div class="popup__container">
             <button class="button popup__close-btn" type="button" aria-label="Закрыть"></button>
-            <form class="popup__form" id="add-card-form">
+            <form class="popup__form" id="add-card-form"  novalidate>
                 <h3 class="popup__title">Новое место</h3>
                 <fieldset class="popup__inputs">
-                    <input class="popup__input" id="place" name="place_input" type="text" placeholder="Название" required>
-                    <input class="popup__input" id="link" name="link_input" type="url" placeholder="Ссылка на картинку" required>
+                    <label>
+                        <input class="popup__input" id="place" name="place_input" type="text" minlength="2" maxlength="30" placeholder="Название" required>
+                        <span class="popup__error" id="place-error"></span>
+                    </label>
+                    <label>
+                        <input class="popup__input" id="link" name="link_input" type="url" placeholder="Ссылка на картинку" required>
+                        <span class="popup__error" id="link-error"></span>
+                    </label>
                 </fieldset>
                 <button class="button popup__submit-btn" type="submit" aria-labelledby="Создать">Создать</button>
             </form>
