@@ -23,32 +23,40 @@ const linkInputElement = document.querySelector('#link');
 // Функции открытия и закрытия попап
 
 function openPopup(popupElement) {
+  document.addEventListener('keydown', closePopupByEscape);
   popupElement.classList.add('popup_opened');
-};
+}
 
 const openEditProfilePopup = () => {
   nameInputElement.value = profileNameElement.textContent;
   jobInputElement.value = profileJobElement.textContent;
-  resetFormValidation(editProfilePopup);
+  resetFormValidation(editProfilePopup, ValidationConfig);
   openPopup(editProfilePopup);
 }
 
 const openAddCardPopup = () => {
+  const submitButton = addCardPopup.querySelector(ValidationConfig.submitButtonSelector);
+  popupAddCardForm.reset();
+  disableButton(submitButton, ValidationConfig);
   openPopup(addCardPopup);
 }
 
-// function closePopup(evt) {
-//   evt.target.closest('.popup').classList.remove('popup_opened');
-// };
-
 function closePopup(popupElement) {
   popupElement.classList.remove('popup_opened');
-};
+}
 
 function closePopupByOverlay(evt) {
   if (evt.target == evt.currentTarget) {
     closePopup(evt.currentTarget);
-  };
+  }
+}
+
+function closePopupByEscape(evt) {
+  let openedPopup = document.querySelector('.popup_opened')
+  if (evt.key == 'Escape') {
+    closePopup(openedPopup);
+  }
+  document.removeEventListener('keydown', closePopupByEscape)
 }
 
 // Функции обработки форм
@@ -87,10 +95,10 @@ const deleteCard = (evt) => {
 
 // Раздел с обработчиками событий
 
-buttonEditProfileElement.addEventListener("click", openEditProfilePopup);
+buttonEditProfileElement.addEventListener('click', openEditProfilePopup);
 buttonAddCardElement.addEventListener('click', openAddCardPopup);
-buttonsClose.forEach((close) => close.addEventListener("click", evt => closePopup( evt.target.closest('.popup'))));
-popupList.forEach((popup) => popup.addEventListener("click", closePopupByOverlay));
+buttonsClose.forEach((close) => close.addEventListener('click', evt => closePopup( evt.target.closest('.popup'))));
+popupList.forEach((popup) => popup.addEventListener('click', closePopupByOverlay));
 popupEditProfileForm.addEventListener('submit', handleEditProfileFormSubmit);
 popupAddCardForm.addEventListener('submit', handleAddCardFormSubmit);
 
