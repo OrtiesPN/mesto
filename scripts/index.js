@@ -19,6 +19,7 @@ const jobInputElement = document.querySelector('#job');
 const popupAddCardForm = document.querySelector('#add-card-form');
 const placeInputElement = document.querySelector('#place');
 const linkInputElement = document.querySelector('#link');
+const submitCardButton = popupAddCardForm.querySelector(validationConfig.submitButtonSelector);
 
 // Функции открытия и закрытия попап
 
@@ -30,19 +31,19 @@ function openPopup(popupElement) {
 const openEditProfilePopup = () => {
   nameInputElement.value = profileNameElement.textContent;
   jobInputElement.value = profileJobElement.textContent;
-  resetFormValidation(editProfilePopup, ValidationConfig);
+  resetFormValidation(editProfilePopup, validationConfig);
   openPopup(editProfilePopup);
 }
 
 const openAddCardPopup = () => {
-  const submitButton = addCardPopup.querySelector(ValidationConfig.submitButtonSelector);
   popupAddCardForm.reset();
-  disableButton(submitButton, ValidationConfig);
+  disableButton(submitCardButton, validationConfig);
   openPopup(addCardPopup);
 }
 
 function closePopup(popupElement) {
   popupElement.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupByEscape);;
 }
 
 function closePopupByOverlay(evt) {
@@ -52,11 +53,10 @@ function closePopupByOverlay(evt) {
 }
 
 function closePopupByEscape(evt) {
-  let openedPopup = document.querySelector('.popup_opened')
   if (evt.key == 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
     closePopup(openedPopup);
   }
-  document.removeEventListener('keydown', closePopupByEscape)
 }
 
 // Функции обработки форм

@@ -1,4 +1,4 @@
-const ValidationConfig = {
+const validationConfig = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__submit-btn',
@@ -76,4 +76,4 @@ function resetFormValidation(formToValidate, { inputSelector, ...rest } ) {
     setButtonStatus(formToValidate, formInputs, rest);
 }
 
-enableValidation(ValidationConfig);
+enableValidation(validationConfig);
