@@ -1,4 +1,6 @@
-import Card from './Card.js'
+import {initialCards, validationConfig} from './constants.js';
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
 
 const popupList = document.querySelectorAll('.popup');
 const editProfilePopup = document.querySelector('.edit-profile-popup');
@@ -14,6 +16,8 @@ const buttonsClose = document.querySelectorAll('.popup__close-btn');
 const profileNameElement = document.querySelector('.profile__name');
 const profileJobElement = document.querySelector('.profile__subtitle');
 
+// const formsList = document.querySelectorAll('form');
+
 const popupEditProfileForm = document.querySelector('#edit-profile-form');
 const nameInputElement = document.querySelector('#name');
 const jobInputElement = document.querySelector('#job'); 
@@ -21,7 +25,7 @@ const jobInputElement = document.querySelector('#job');
 const popupAddCardForm = document.querySelector('#add-card-form');
 const placeInputElement = document.querySelector('#place');
 const linkInputElement = document.querySelector('#link');
-const submitCardButton = popupAddCardForm.querySelector(validationConfig.submitButtonSelector);
+// const submitCardButton = popupAddCardForm.querySelector(validationConfig.submitButtonSelector);
 
 // Функции открытия и закрытия попап
 
@@ -33,13 +37,16 @@ function openPopup(popupElement) {
 const openEditProfilePopup = () => {
   nameInputElement.value = profileNameElement.textContent;
   jobInputElement.value = profileJobElement.textContent;
-  resetFormValidation(editProfilePopup, validationConfig);
+  const validation = new FormValidator(validationConfig, popupEditProfileForm);
+  validation.enableValidation();
   openPopup(editProfilePopup);
 }
 
 const openAddCardPopup = () => {
   popupAddCardForm.reset();
-  disableButton(submitCardButton, validationConfig);
+  const validation = new FormValidator(validationConfig, popupAddCardForm);
+  validation.enableValidation();
+  validation.resetValidation();
   openPopup(addCardPopup);
 }
 
@@ -63,11 +70,16 @@ function closePopupByEscape(evt) {
 
 // Функции обработки форм
 
+// formsList.forEach((form) => {
+//   form = new FormValidator(validationConfig, form);
+//   form.enableValidation();
+// })
+
 const handleEditProfileFormSubmit = (evt) => {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-    profileNameElement.textContent = nameInputElement.value; // подставляю в профиль значения из строк ввода
+    evt.preventDefault();
+    profileNameElement.textContent = nameInputElement.value;
     profileJobElement.textContent = jobInputElement.value;
-    closePopup(editProfilePopup); // закрываю попап
+    closePopup(editProfilePopup); 
 }
 
 const handleAddCardFormSubmit = (evt) => {
@@ -112,31 +124,20 @@ const cardTemplate = '.card-template';
 
 initialCards.forEach(appendCard);
 
-// function addCard(card) {
-//   const newCard = cardTemplate.content.cloneNode(true);
-//   const newCardImage = newCard.querySelector('.card__image');
-//   newCardImage.src = card.link;
-//   newCardImage.alt = card.name;
-//   newCard.querySelector('.card__title').textContent = card.name;
-//   newCardImage.addEventListener('click', () => openShowCardPopup(card));
-//   newCard.querySelector('.card__like-btn').addEventListener('click', toggleLike);
-//   newCard.querySelector('.card__delete-btn').addEventListener('click', deleteCard);
-//   return newCard;
-// }
-
-function cardFromClass(card) {
+function getCardFromClass(card) {
   return new Card(card, cardTemplate, openShowCardPopup);
 }
 
 function prependCard(card) {
-  // const newCard = cardFromClass(card)
-  elements.prepend(cardFromClass(card).createNewCard())
+  // const newCard = getCardFromClass(card)
+  elements.prepend(getCardFromClass(card).createNewCard())
 }
 
 function appendCard(card) {
-  // const newCard = cardFromClass(card)
-  elements.append(cardFromClass(card).createNewCard());
+  // const newCard = getCardFromClass(card)
+  elements.append(getCardFromClass(card).createNewCard());
 }
+
 
 
 
