@@ -37,16 +37,12 @@ function openPopup(popupElement) {
 const openEditProfilePopup = () => {
   nameInputElement.value = profileNameElement.textContent;
   jobInputElement.value = profileJobElement.textContent;
-  const validation = new FormValidator(validationConfig, popupEditProfileForm);
-  validation.enableValidation();
   openPopup(editProfilePopup);
 }
 
 const openAddCardPopup = () => {
   popupAddCardForm.reset();
-  const validation = new FormValidator(validationConfig, popupAddCardForm);
-  validation.enableValidation();
-  validation.resetValidation();
+  validationpopupAddCardForm.setButtonStatus();
   openPopup(addCardPopup);
 }
 
@@ -74,6 +70,12 @@ function closePopupByEscape(evt) {
 //   form = new FormValidator(validationConfig, form);
 //   form.enableValidation();
 // })
+
+const validationEditProfileForm = new FormValidator(validationConfig, popupEditProfileForm);
+validationEditProfileForm.enableValidation();
+
+const validationpopupAddCardForm = new FormValidator(validationConfig, popupAddCardForm);
+validationpopupAddCardForm.enableValidation();
 
 const handleEditProfileFormSubmit = (evt) => {
     evt.preventDefault();
@@ -125,19 +127,15 @@ const cardTemplate = '.card-template';
 initialCards.forEach(appendCard);
 
 function getCardFromClass(card) {
-  return new Card(card, cardTemplate, openShowCardPopup);
+  return new Card(card, cardTemplate, openShowCardPopup).createNewCard();
 }
 
 function prependCard(card) {
   // const newCard = getCardFromClass(card)
-  elements.prepend(getCardFromClass(card).createNewCard())
+  elements.prepend(getCardFromClass(card))
 }
 
 function appendCard(card) {
   // const newCard = getCardFromClass(card)
-  elements.append(getCardFromClass(card).createNewCard());
+  elements.append(getCardFromClass(card));
 }
-
-
-
-
