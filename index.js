@@ -4,6 +4,7 @@ import FormValidator from './scripts/components/FormValidator.js';
 import Popup from './scripts/components/Popup.js';
 import PopupWithImage from './scripts/components/PopupWithImage.js';
 import Section from './scripts/components/Section.js';
+import UserInfo from './scripts/components/UserInfo.js';
 
 const buttonEditProfileElement = document.querySelector('.profile__edit-btn');
 const buttonAddCardElement = document.querySelector('.profile__add-btn'); 
@@ -22,10 +23,14 @@ const placeInputElement = document.querySelector('#place');
 const linkInputElement = document.querySelector('#link');
 // const submitCardButton = popupAddCardForm.querySelector(validationConfig.submitButtonSelector);
 
+const userInfo = new UserInfo ('.profile__name', '.profile__subtitle')
+
 // Селекторы и классы
 const sectionSelector = ('.elements__cards');
+
 const editProfilePopupSelector = ('.edit-profile-popup');
 const imageCardPopupSelector = ('.image-card-popup');
+
 const cardTemplate = ('.card-template');
 
 // Обработчики Popup
