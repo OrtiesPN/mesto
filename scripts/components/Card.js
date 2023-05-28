@@ -7,7 +7,6 @@ export default class Card {
     }
   
     _toggleLike = () => {
-      // evt.target.classList.toggle('card__like-btn_active');
       this._newCardLikeButton.classList.toggle('card__like-btn_active');
     }
   
