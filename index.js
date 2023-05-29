@@ -5,12 +5,12 @@ import Popup from './scripts/components/Popup.js';
 import PopupWithImage from './scripts/components/PopupWithImage.js';
 import Section from './scripts/components/Section.js';
 import UserInfo from './scripts/components/UserInfo.js';
+import PopupWithForm from './scripts/components/PopupWithForm.js';
 
 const buttonEditProfileElement = document.querySelector('.profile__edit-btn');
 const buttonAddCardElement = document.querySelector('.profile__add-btn'); 
 
-const profileNameElement = document.querySelector('.profile__name');
-const profileJobElement = document.querySelector('.profile__subtitle');
+
 
 const formsList = document.querySelectorAll('form');
 
@@ -21,21 +21,30 @@ const jobInputElement = document.querySelector('#job');
 const popupAddCardForm = document.querySelector('#add-card-form');
 const placeInputElement = document.querySelector('#place');
 const linkInputElement = document.querySelector('#link');
-// const submitCardButton = popupAddCardForm.querySelector(validationConfig.submitButtonSelector);
+const submitCardButton = popupAddCardForm.querySelector(validationConfig.submitButtonSelector);
 
-const userInfo = new UserInfo ('.profile__name', '.profile__subtitle')
+
 
 // Селекторы и классы
+const profileNameSelector = ('.profile__name');
+const profileJobSelector = ('.profile__subtitle');
+
 const sectionSelector = ('.elements__cards');
 
 const editProfilePopupSelector = ('.edit-profile-popup');
+const addCardPopup = ('.add-card-popup');
 const imageCardPopupSelector = ('.image-card-popup');
 
 const cardTemplate = ('.card-template');
 
 // Обработчики Popup
-const editProfilePopup = new Popup (editProfilePopupSelector);
+const userInfo = new UserInfo (profileNameSelector, profileJobSelector);
+
+const editProfilePopup = new PopupWithForm (editProfilePopupSelector,
+  handleEditProfileFormSubmit);
 editProfilePopup.setEventListeners();
+
+const addCardPopup = new PopupWithForm ()
 
 const imageCardPopup = new PopupWithImage (imageCardPopupSelector)
 imageCardPopup.setEventListeners();
@@ -47,6 +56,26 @@ const cardSection = new Section ( {items: initialCards,
 cardSection.addInitialItems ();
 
 
+
+
+// Функции callback
+function toggleEditProfilePopup() {
+  editProfilePopup.setInputValues(userInfo.getUserInfo());
+  editProfilePopup.open();
+}
+
+function handleEditProfileFormSubmit(formValues) {
+  userInfo.setUserInfo(formValues);
+  editProfilePopup.close(); 
+}
+
+const handleAddCardFormSubmit = (evt) => {
+  evt.preventDefault();
+  const userCard = {name: placeInputElement.value, link: linkInputElement.value};
+  prependCard(userCard);
+  // closePopup(addCardPopup); 
+  popupAddCardForm.reset();
+}
 // Функции обработки форм
 
 formsList.forEach((form) => {
@@ -60,25 +89,10 @@ validationEditProfileForm.enableValidation();
 const validationpopupAddCardForm = new FormValidator(validationConfig, popupAddCardForm);
 validationpopupAddCardForm.enableValidation();
 
-const handleEditProfileFormSubmit = (evt) => {
-    evt.preventDefault();
-    profileNameElement.textContent = nameInputElement.value;
-    profileJobElement.textContent = jobInputElement.value;
-    // closePopup(editProfilePopup); 
-}
-
-const handleAddCardFormSubmit = (evt) => {
-  evt.preventDefault();
-  const userCard = {name: placeInputElement.value, link: linkInputElement.value};
-  prependCard(userCard);
-  // closePopup(addCardPopup); 
-  popupAddCardForm.reset();
-}
-
 // Раздел с обработчиками событий
 
-buttonEditProfileElement.addEventListener('click', () => editProfilePopup.open());
+
+buttonEditProfileElement.addEventListener('click', toggleEditProfilePopup);
 // buttonAddCardElement.addEventListener('click', openAddCardPopup);
-popupEditProfileForm.addEventListener('submit', handleEditProfileFormSubmit);
-popupAddCardForm.addEventListener('submit', handleAddCardFormSubmit);
+// popupAddCardForm.addEventListener('submit', handleAddCardFormSubmit);
 
