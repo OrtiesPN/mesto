@@ -52,9 +52,12 @@ export default class FormValidator {
           this._enableButton();
       }
     }
+
+    clearErrors() {
+      this._inputList.forEach((input) => this._hideErrorMessage(input));
+    }
   
     _setEventListeners() {
-      this._form.addEventListener('submit', evt => evt.preventDefault());
       this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
       this._inputList.forEach((input) => input.addEventListener('input', () => {
         this._checkInputValidity(input);
@@ -65,8 +68,4 @@ export default class FormValidator {
     enableValidation() {
       this._setEventListeners();
     }
-  
-    // resetValidation() {
-    //   this._setButtonStatus()
-    // }
   }

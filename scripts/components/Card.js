@@ -1,7 +1,7 @@
 export default class Card {
     constructor(data, cardTemplate, openShowCardPopup) {
-      this._name = data.name;
-      this._link = data.link;
+      this._name = data.card_place;
+      this._link = data.card_link;
       this._cardTemplate = cardTemplate;
       this._openShowCardPopup = openShowCardPopup;
     }

@@ -1,27 +1,27 @@
 const initialCards = [
     {
-      name: 'Россия',
-      link: './images/OctoberWalks-72.jpg'
+      card_place: 'Россия',
+      card_link: './images/OctoberWalks-72.jpg'
     },
     {
-      name: 'Москва',
-      link: './images/autumn_dull-9.jpg'
+      card_place: 'Москва',
+      card_link: './images/autumn_dull-9.jpg'
     },
     {
-      name: 'Краснодарский край',
-      link: './images/gele-1.jpg'
+      card_place: 'Краснодарский край',
+      card_link: './images/gele-1.jpg'
     },
     {
-      name: 'Геленджик',
-      link: './images/gele-187.jpg'
+      card_place: 'Геленджик',
+      card_link: './images/gele-187.jpg'
     },
     {
-      name: 'Шри-Ланка',
-      link: './images/inland-142.jpg'
+      card_place: 'Шри-Ланка',
+      card_link: './images/inland-142.jpg'
     },
     {
-      name: 'Серфинг',
-      link: './images/cool_surfers-7.jpg'
+      card_place: 'Серфинг',
+      card_link: './images/cool_surfers-7.jpg'
     }
   ];
 

@@ -14,10 +14,3 @@ export default class PopupWithImage extends Popup {
         super.open();
     }
 }
-
-// const openShowCardPopup = (card) => {
-//     showCardImage.src = card.link;
-//     showCardImage.alt = card.name;
-//     showCardCaption.textContent = card.name;
-//     // openPopup(imageCardPopup);
-//   }
