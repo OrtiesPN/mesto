@@ -1,30 +1,26 @@
-import {initialCards, validationConfig} from './scripts/utils/constants.js';
-import Card from './scripts/components/Card.js';
-import FormValidator from './scripts/components/FormValidator.js';
-import Popup from './scripts/components/Popup.js';
-import PopupWithImage from './scripts/components/PopupWithImage.js';
-import Section from './scripts/components/Section.js';
-import UserInfo from './scripts/components/UserInfo.js';
-import PopupWithForm from './scripts/components/PopupWithForm.js';
+import './index.css';
 
-const buttonEditProfileElement = document.querySelector('.profile__edit-btn');
-const buttonAddCardElement = document.querySelector('.profile__add-btn'); 
-
-const popupEditProfileForm = document.querySelector('#edit-profile-form'); 
-const popupAddCardForm = document.querySelector('#add-card-form');
-
-// Селекторы и классы
-
-const profileNameSelector = ('.profile__name');
-const profileJobSelector = ('.profile__subtitle');
-
-const sectionSelector = ('.elements__cards');
-
-const editProfilePopupSelector = ('.edit-profile-popup');
-const addCardPopupSelector = ('.add-card-popup');
-const imageCardPopupSelector = ('.image-card-popup');
-
-const cardTemplate = ('.card-template');
+import {
+  initialCards,
+  validationConfig,
+  buttonEditProfileElement,
+  buttonAddCardElement,
+  popupEditProfileForm,
+  popupAddCardForm,
+  profileNameSelector,
+  profileJobSelector,
+  sectionSelector,
+  editProfilePopupSelector,
+  addCardPopupSelector,
+  imageCardPopupSelector,
+  cardTemplate
+} from '../scripts/utils/constants.js';
+import Card from '../scripts/components/Card.js';
+import FormValidator from '../scripts/components/FormValidator.js';
+import PopupWithImage from '../scripts/components/PopupWithImage.js';
+import Section from '../scripts/components/Section.js';
+import UserInfo from '../scripts/components/UserInfo.js';
+import PopupWithForm from '../scripts/components/PopupWithForm.js';
 
 // Обработчики Popup
 
@@ -69,6 +65,7 @@ function handleAddCardFormSubmit(formValues) {
   cardSection.prependItem(formValues);
   addCardPopup.close();
 }
+
 // Функции обработки форм
 
 const validationEditProfileForm = new FormValidator(validationConfig, popupEditProfileForm);
