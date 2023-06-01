@@ -3,10 +3,6 @@ import './index.css';
 import {
   initialCards,
   validationConfig,
-  buttonEditProfileElement,
-  buttonAddCardElement,
-  popupEditProfileForm,
-  popupAddCardForm,
   profileNameSelector,
   profileJobSelector,
   sectionSelector,
@@ -14,13 +10,19 @@ import {
   addCardPopupSelector,
   imageCardPopupSelector,
   cardTemplate
-} from '../scripts/utils/constants.js';
-import Card from '../scripts/components/Card.js';
-import FormValidator from '../scripts/components/FormValidator.js';
-import PopupWithImage from '../scripts/components/PopupWithImage.js';
-import Section from '../scripts/components/Section.js';
-import UserInfo from '../scripts/components/UserInfo.js';
-import PopupWithForm from '../scripts/components/PopupWithForm.js';
+} from '../utils/constants.js';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import Section from '../components/Section.js';
+import UserInfo from '../components/UserInfo.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+
+const buttonEditProfileElement = document.querySelector('.profile__edit-btn');
+const buttonAddCardElement = document.querySelector('.profile__add-btn'); 
+
+const popupEditProfileForm = document.querySelector('#edit-profile-form'); 
+const popupAddCardForm = document.querySelector('#add-card-form');
 
 // Обработчики Popup
 
@@ -42,6 +44,7 @@ cardSection.addInitialItems ();
 // Функции callback
 
 function toggleEditProfilePopup() {
+  validationEditProfileForm.clearErrors();
   editProfilePopup.setInputValues(userInfo.getUserInfo());
   editProfilePopup.open();
 }
