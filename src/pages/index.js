@@ -7,6 +7,7 @@ import {
   profileJobSelector,
   sectionSelector,
   editProfilePopupSelector,
+  editAvatarPopupSelector,
   addCardPopupSelector,
   imageCardPopupSelector,
   cardTemplate
@@ -19,10 +20,14 @@ import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 
 const buttonEditProfileElement = document.querySelector('.profile__edit-btn');
-const buttonAddCardElement = document.querySelector('.profile__add-btn'); 
+const buttonEditAvatarElement = document.querySelector('.profile__avatar-btn');
+const buttonAddCardElement = document.querySelector('.profile__add-btn');
+
+const AvatarElement = document.querySelector('.profile__avatar');
 
 const popupEditProfileForm = document.querySelector('#edit-profile-form'); 
 const popupAddCardForm = document.querySelector('#add-card-form');
+const popupEditAvatarForm = document.querySelector('#edit-avatar-form');
 
 // Обработчики Popup
 
@@ -30,6 +35,9 @@ const userInfo = new UserInfo (profileNameSelector, profileJobSelector);
 
 const editProfilePopup = new PopupWithForm (editProfilePopupSelector, handleEditProfileFormSubmit);
 editProfilePopup.setEventListeners();
+
+const editAvatarPopup = new PopupWithForm (editAvatarPopupSelector, handleEditAvatarFormSubmit);
+editAvatarPopup.setEventListeners();
 
 const addCardPopup = new PopupWithForm (addCardPopupSelector, handleAddCardFormSubmit);
 addCardPopup.setEventListeners();
@@ -49,6 +57,12 @@ function toggleEditProfilePopup() {
   editProfilePopup.open();
 }
 
+function toggleEditAvatarPopup() {
+  validationPopupEditAvatarForm.setButtonStatus()
+  validationPopupEditAvatarForm.clearErrors()
+  editAvatarPopup.open();
+}
+
 function toggleAddCardPopup() {
   validationPopupAddCardForm.setButtonStatus();
   validationPopupAddCardForm.clearErrors();
@@ -64,6 +78,11 @@ function handleEditProfileFormSubmit(formValues) {
   editProfilePopup.close(); 
 }
 
+function handleEditAvatarFormSubmit(formValues) {
+  AvatarElement.src = formValues.user_avatar;
+  editAvatarPopup.close();
+}
+
 function handleAddCardFormSubmit(formValues) {
   cardSection.prependItem(formValues);
   addCardPopup.close();
@@ -77,8 +96,12 @@ validationEditProfileForm.enableValidation();
 const validationPopupAddCardForm = new FormValidator(validationConfig, popupAddCardForm);
 validationPopupAddCardForm.enableValidation();
 
+const validationPopupEditAvatarForm = new FormValidator(validationConfig, popupEditAvatarForm);
+validationPopupEditAvatarForm.enableValidation();
+
 // Раздел с обработчиками событий
 
 buttonEditProfileElement.addEventListener('click', toggleEditProfilePopup);
 buttonAddCardElement.addEventListener('click', toggleAddCardPopup);
+buttonEditAvatarElement.addEventListener('click', toggleEditAvatarPopup);
 

@@ -13,7 +13,9 @@
         <main class="main">
             <section class="profile">
                 <div class="profile__container">
-                    <img src="<%=require('./images/Niki.jpg')%>" alt="аватар пользователя" class="profile__avatar">
+                    <button class="profile__avatar-btn" type="button">
+                        <img src="<%=require('./images/Niki.jpg')%>" alt="аватар пользователя" class="profile__avatar">
+                    </button>
                     <div class="profile__title">
                         <h1 class="profile__name">Петухов Никита</h1>
                         <button class="button profile__edit-btn" type="button" aria-label="Редактировать профиль"></button>
@@ -29,51 +31,75 @@
         <footer class="footer">
             <p class="footer__copyright">© 2020 Mesto Russia</p>
         </footer>
-    </div>
-    <div class="popup edit-profile-popup">
-        <div class="popup__container">
-            <button class="button popup__close-btn" type="button" aria-label="Закрыть"></button>
-            <form class="popup__form" id="edit-profile-form"  novalidate>
-                <h3 class="popup__title">Редактировать профиль</h3>
-                <fieldset class="popup__inputs">
-                    <label>
-                        <input class="popup__input" id="name" name="user_name" type="text" minlength="2" maxlength="40" placeholder="Имя" required>
-                        <span class="popup__error" id="name-error"></span>
-                    </label>
-                    <label>
-                        <input class="popup__input" id="job" name="user_info" type="text" minlength="2" maxlength="200" placeholder="О себе" required >
-                        <span class="popup__error" id="job-error"></span>
-                    </label>
-                </fieldset>
-                <button class="button popup__submit-btn" type="submit" aria-labelledby="Сохранить">Сохранить</button>
-            </form>
+        <div class="popup edit-profile-popup">
+            <div class="popup__container">
+                <button class="button popup__close-btn" type="button" aria-label="Закрыть"></button>
+                <form class="popup__form" id="edit-profile-form"  novalidate>
+                    <h3 class="popup__title">Редактировать профиль</h3>
+                    <fieldset class="popup__inputs">
+                        <label>
+                            <input class="popup__input" id="name" name="user_name" type="text" minlength="2" maxlength="40" placeholder="Имя" required>
+                            <span class="popup__error" id="name-error"></span>
+                        </label>
+                        <label>
+                            <input class="popup__input" id="job" name="user_info" type="text" minlength="2" maxlength="200" placeholder="О себе" required >
+                            <span class="popup__error" id="job-error"></span>
+                        </label>
+                    </fieldset>
+                    <button class="button popup__submit-btn" type="submit" aria-labelledby="Сохранить">Сохранить</button>
+                </form>
+            </div>
         </div>
-    </div>
-    <div class="popup add-card-popup">
-        <div class="popup__container">
-            <button class="button popup__close-btn" type="button" aria-label="Закрыть"></button>
-            <form class="popup__form" id="add-card-form"  novalidate>
-                <h3 class="popup__title">Новое место</h3>
-                <fieldset class="popup__inputs">
-                    <label>
-                        <input class="popup__input" id="place" name="card_place" type="text" minlength="2" maxlength="30" placeholder="Название" required>
-                        <span class="popup__error" id="place-error"></span>
-                    </label>
-                    <label>
-                        <input class="popup__input" id="link" name="card_link" type="url" placeholder="Ссылка на картинку" required>
-                        <span class="popup__error" id="link-error"></span>
-                    </label>
-                </fieldset>
-                <button class="button popup__submit-btn" type="submit" aria-labelledby="Создать">Создать</button>
-            </form>
+        <div class="popup edit-avatar-popup">
+            <div class="popup__container">
+                <button class="button popup__close-btn" type="button" aria-label="Закрыть"></button>
+                <form class="popup__form" id="edit-avatar-form"  novalidate>
+                    <h3 class="popup__title">Обновить аватар</h3>
+                    <fieldset class="popup__inputs">
+                        <label>
+                            <input class="popup__input" id="avatar" name="user_avatar" type="url" placeholder="Ссылка на картинку" required>
+                            <span class="popup__error" id="avatar-error"></span>
+                        </label>
+                    </fieldset>
+                    <button class="button popup__submit-btn" type="submit" aria-labelledby="Сохранить">Сохранить</button>
+                </form>
+            </div>
         </div>
-    </div>
-    <div class="popup image-card-popup">
-        <figure class="popup-card">
-            <button class="button popup__close-btn" type="button" aria-label="Закрыть"></button>
-            <img class="popup-card__image" alt="#" src="#">
-            <figcaption class="popup-card__caption"></figcaption>
-        </figure>
+        <div class="popup add-card-popup">
+            <div class="popup__container">
+                <button class="button popup__close-btn" type="button" aria-label="Закрыть"></button>
+                <form class="popup__form" id="add-card-form"  novalidate>
+                    <h3 class="popup__title">Новое место</h3>
+                    <fieldset class="popup__inputs">
+                        <label>
+                            <input class="popup__input" id="place" name="card_place" type="text" minlength="2" maxlength="30" placeholder="Название" required>
+                            <span class="popup__error" id="place-error"></span>
+                        </label>
+                        <label>
+                            <input class="popup__input" id="link" name="card_link" type="url" placeholder="Ссылка на картинку" required>
+                            <span class="popup__error" id="link-error"></span>
+                        </label>
+                    </fieldset>
+                    <button class="button popup__submit-btn" type="submit" aria-labelledby="Создать">Создать</button>
+                </form>
+            </div>
+        </div>
+        <div class="popup image-card-popup">
+            <figure class="popup-card">
+                <button class="button popup__close-btn" type="button" aria-label="Закрыть"></button>
+                <img class="popup-card__image" alt="#" src="#">
+                <figcaption class="popup-card__caption"></figcaption>
+            </figure>
+        </div>
+        <div class="popup delete-card-popup">
+            <div class="popup__container">
+                <button class="button popup__close-btn" type="button" aria-label="Закрыть"></button>
+                <form class="popup__form" id="delete-card-form"  novalidate>
+                    <h3 class="popup__title">Вы уверены?</h3>
+                    <button class="button popup__submit-btn" type="submit" aria-labelledby="Сохранить">Да</button>
+                </form>
+            </div>
+        </div>
     </div>
     <template class="card-template">
         <li class="card">

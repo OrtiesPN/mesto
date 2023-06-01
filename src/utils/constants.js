@@ -49,6 +49,7 @@ const profileJobSelector = ('.profile__subtitle');
 const sectionSelector = ('.elements__cards');
 
 const editProfilePopupSelector = ('.edit-profile-popup');
+const editAvatarPopupSelector = ('.edit-avatar-popup');
 const addCardPopupSelector = ('.add-card-popup');
 const imageCardPopupSelector = ('.image-card-popup');
 
@@ -61,6 +62,7 @@ export {
   profileJobSelector,
   sectionSelector,
   editProfilePopupSelector,
+  editAvatarPopupSelector,
   addCardPopupSelector,
   imageCardPopupSelector,
   cardTemplate
