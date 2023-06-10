@@ -13,7 +13,7 @@
         <main class="main">
             <section class="profile">
                 <div class="profile__container">
-                    <button class="profile__avatar-btn" type="button">
+                    <button class="button profile__avatar-btn" type="button">
                         <img src="<%=require('./images/Niki.jpg')%>" alt="аватар пользователя" class="profile__avatar">
                     </button>
                     <div class="profile__title">
@@ -91,11 +91,11 @@
                 <figcaption class="popup-card__caption"></figcaption>
             </figure>
         </div>
-        <div class="popup delete-card-popup">
+        <div class="popup warning-popup">
             <div class="popup__container">
                 <button class="button popup__close-btn" type="button" aria-label="Закрыть"></button>
                 <form class="popup__form" id="delete-card-form"  novalidate>
-                    <h3 class="popup__title">Вы уверены?</h3>
+                    <h3 class="popup__title popup__title_warning">Вы уверены?</h3>
                     <button class="button popup__submit-btn" type="submit" aria-labelledby="Сохранить">Да</button>
                 </form>
             </div>

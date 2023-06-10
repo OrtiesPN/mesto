@@ -10,6 +10,7 @@ import {
   editAvatarPopupSelector,
   addCardPopupSelector,
   imageCardPopupSelector,
+  warningPopupSelector,
   cardTemplate
 } from '../utils/constants.js';
 import Card from '../components/Card.js';
@@ -18,12 +19,13 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWarning from '../components/PopupWarning.js';
 
 const buttonEditProfileElement = document.querySelector('.profile__edit-btn');
 const buttonEditAvatarElement = document.querySelector('.profile__avatar-btn');
 const buttonAddCardElement = document.querySelector('.profile__add-btn');
 
-const AvatarElement = document.querySelector('.profile__avatar');
+const avatarElement = document.querySelector('.profile__avatar');
 
 const popupEditProfileForm = document.querySelector('#edit-profile-form'); 
 const popupAddCardForm = document.querySelector('#add-card-form');
@@ -45,9 +47,14 @@ addCardPopup.setEventListeners();
 const imageCardPopup = new PopupWithImage (imageCardPopupSelector)
 imageCardPopup.setEventListeners();
 
+const warningPopup = new PopupWarning (warningPopupSelector, handleWarningSubmit);
+warningPopup.setEventListeners();
+
 const cardSection = new Section ( { items: initialCards, 
   renderer: addCardRenderer }, sectionSelector);
 cardSection.addInitialItems ();
+
+
 
 // Функции callback
 
@@ -70,7 +77,7 @@ function toggleAddCardPopup() {
 }
 
 function addCardRenderer(element) {
-  return new Card(element, cardTemplate, imageCardPopup.open).createNewCard();
+  return new Card(element, cardTemplate, imageCardPopup.open, warningPopup.open).createNewCard();
 }
 
 function handleEditProfileFormSubmit(formValues) {
@@ -79,13 +86,18 @@ function handleEditProfileFormSubmit(formValues) {
 }
 
 function handleEditAvatarFormSubmit(formValues) {
-  AvatarElement.src = formValues.user_avatar;
+  avatarElement.src = formValues.user_avatar;
   editAvatarPopup.close();
 }
 
 function handleAddCardFormSubmit(formValues) {
   cardSection.prependItem(formValues);
   addCardPopup.close();
+}
+
+function handleWarningSubmit(target) {
+  target.deleteCard();
+  warningPopup.close();
 }
 
 // Функции обработки форм

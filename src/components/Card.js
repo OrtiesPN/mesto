@@ -1,18 +1,23 @@
 export default class Card {
-    constructor(data, cardTemplate, openShowCardPopup) {
+    constructor(data, cardTemplate, openShowCardPopup, openWarningPopup) {
       this._name = data.card_place;
       this._link = data.card_link;
       this._cardTemplate = cardTemplate;
       this._openShowCardPopup = openShowCardPopup;
+      this._warning = openWarningPopup;
     }
   
     _toggleLike = () => {
       this._newCardLikeButton.classList.toggle('card__like-btn_active');
     }
   
-    _deleteCard = () => {
+    deleteCard() {
       this._newCard.remove();
       this._newCard = null;
+    }
+
+    _toggleWarning = () => {
+      this._warning(this);
     }
   
     _toggleCardPopup = () => {
@@ -21,7 +26,7 @@ export default class Card {
   
     _setEventListeners() {
       this._newCardLikeButton.addEventListener('click', this._toggleLike);
-      this._newCardDeleteButton.addEventListener('click', this._deleteCard);
+      this._newCardDeleteButton.addEventListener('click', this._toggleWarning);
       this._newCardImage.addEventListener('click', this._toggleCardPopup);
     }
   

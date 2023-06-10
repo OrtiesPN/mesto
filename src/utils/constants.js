@@ -52,6 +52,7 @@ const editProfilePopupSelector = ('.edit-profile-popup');
 const editAvatarPopupSelector = ('.edit-avatar-popup');
 const addCardPopupSelector = ('.add-card-popup');
 const imageCardPopupSelector = ('.image-card-popup');
+const warningPopupSelector = ('.warning-popup');
 
 const cardTemplate = ('.card-template');
 
@@ -65,5 +66,6 @@ export {
   editAvatarPopupSelector,
   addCardPopupSelector,
   imageCardPopupSelector,
+  warningPopupSelector,
   cardTemplate
 };
