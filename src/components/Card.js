@@ -1,14 +1,39 @@
 export default class Card {
-    constructor(data, cardTemplate, openShowCardPopup, openWarningPopup) {
-      this._name = data.card_place;
-      this._link = data.card_link;
+    constructor(data, cardTemplate, openShowCardPopup, openWarningPopup, handleLike, userId) {
+      this._name = data.name;
+      this._link = data.link;
+      this._userId = userId;
+      this._cardId = data._id;
+      this._ownerId = data.owner._id;
+      this._likes = data.likes;
       this._cardTemplate = cardTemplate;
       this._openShowCardPopup = openShowCardPopup;
       this._warning = openWarningPopup;
+      this._handleLike = handleLike;
     }
   
     _toggleLike = () => {
-      this._newCardLikeButton.classList.toggle('card__like-btn_active');
+      this._handleLike(this._cardId, this._newCardLikeButton, this._newCardLikesCount )
+    }
+
+    _renderLikes() {
+      this._newCardLikesCount = this._newCard.querySelector('.card__likes-counter');
+      this._newCardLikesCount.textContent = this._likes.length;
+      this._likes.forEach(like => {
+        if (like._id == this._userId) {
+          this._newCardLikeButton.classList.add('card__like-btn_active');
+          return;
+        }
+      });
+        
+    }
+
+    _toggleDeleteButtonVisibility() {
+      if (this._userId !== this._ownerId) {
+        this._newCardDeleteButton.setAttribute('hidden', true);
+      } else {
+        this._newCardDeleteButton.removeAttribute('hidden');
+      }
     }
   
     deleteCard() {
@@ -38,6 +63,8 @@ export default class Card {
       this._newCardImage.src = this._link;
       this._newCardImage.alt = this._name;
       this._newCard.querySelector('.card__title').textContent = this._name;
+      this._renderLikes();
+      this._toggleDeleteButtonVisibility();
       this._setEventListeners()
       
       return this._newCard;

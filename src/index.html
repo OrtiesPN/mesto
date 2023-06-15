@@ -14,13 +14,13 @@
             <section class="profile">
                 <div class="profile__container">
                     <button class="button profile__avatar-btn" type="button">
-                        <img src="<%=require('./images/Niki.jpg')%>" alt="аватар пользователя" class="profile__avatar">
+                        <img src="#>" alt="аватар пользователя" class="profile__avatar">
                     </button>
                     <div class="profile__title">
-                        <h1 class="profile__name">Петухов Никита</h1>
+                        <h1 class="profile__name"></h1>
                         <button class="button profile__edit-btn" type="button" aria-label="Редактировать профиль"></button>
                     </div>
-                    <p class="profile__subtitle">Нажимает на кнопки</p>
+                    <p class="profile__subtitle"></p>
                 </div>
                 <button class="button profile__add-btn" type="button" aria-label="Добавить карточку"></button>
             </section>
@@ -107,7 +107,10 @@
             <img src="#" alt="#" class="card__image">
             <div class="card__description">
                 <h2 class="card__title"></h2>
-                <button class="button card__like-btn" type="button" aria-label="Нравится!"></button>
+                <div class="card__likes">
+                    <button class="button card__like-btn" type="button" aria-label="Нравится!"></button>
+                    <span class="card__likes-counter"></span>
+                </div>
             </div>
         </li>
     </template>   

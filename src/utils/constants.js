@@ -45,6 +45,7 @@ const initialCards = [
 
 const profileNameSelector = ('.profile__name');
 const profileJobSelector = ('.profile__subtitle');
+const avatarSelector = ('.profile__avatar');
 
 const sectionSelector = ('.elements__cards');
 
@@ -61,6 +62,7 @@ export {
   validationConfig,
   profileNameSelector,
   profileJobSelector,
+  avatarSelector,
   sectionSelector,
   editProfilePopupSelector,
   editAvatarPopupSelector,
