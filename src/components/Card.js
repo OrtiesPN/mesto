@@ -20,9 +20,8 @@ export default class Card {
       this._newCardLikesCount = this._newCard.querySelector('.card__likes-counter');
       this._newCardLikesCount.textContent = this._likes.length;
       this._likes.forEach(like => {
-        if (like._id == this._userId) {
+        if (like._id === this._userId) {
           this._newCardLikeButton.classList.add('card__like-btn_active');
-          return;
         }
       });
         

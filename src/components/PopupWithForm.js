@@ -11,11 +11,10 @@ export default class PopupWithForm extends Popup {
         this._formValues = {};
     }
 
-    _getInputValues() {
+    _fillFormValues() {
         this._inputList.forEach((input) => {
           this._formValues[input.name] = input.value
         })
-        return this._formValues;
       }
 
     setInputValues(data) {
@@ -29,7 +28,7 @@ export default class PopupWithForm extends Popup {
         this._form.addEventListener('submit', (evt) => {
             evt.preventDefault();
             this._submitButton.textContent = `${this._submitDefaultText}...`;
-            this._getInputValues();
+            this._fillFormValues();
             this._submitFunc(this._formValues);
         })
     }

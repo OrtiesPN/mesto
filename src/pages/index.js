@@ -54,14 +54,14 @@ const userInfo = new UserInfo (profileNameSelector, profileJobSelector, avatarSe
 let userId = null;
 
 
-const editProfilePopup = new PopupWithForm (editProfilePopupSelector, handleEditProfileFormSubmit);
-editProfilePopup.setEventListeners();
+const profilePopup = new PopupWithForm (editProfilePopupSelector, handleEditProfileFormSubmit);
+profilePopup.setEventListeners();
 
-const editAvatarPopup = new PopupWithForm (editAvatarPopupSelector, handleEditAvatarFormSubmit);
-editAvatarPopup.setEventListeners();
+const avatarPopup = new PopupWithForm (editAvatarPopupSelector, handleEditAvatarFormSubmit);
+avatarPopup.setEventListeners();
 
-const addCardPopup = new PopupWithForm (addCardPopupSelector, handleAddCardFormSubmit);
-addCardPopup.setEventListeners();
+const newCardPopup = new PopupWithForm (addCardPopupSelector, handleAddCardFormSubmit);
+newCardPopup.setEventListeners();
 
 const imageCardPopup = new PopupWithImage (imageCardPopupSelector)
 imageCardPopup.setEventListeners();
@@ -75,20 +75,20 @@ const cardSection = new Section ( addCardRenderer, sectionSelector);
 
 function toggleEditProfilePopup() {
   validationEditProfileForm.clearErrors();
-  editProfilePopup.setInputValues(userInfo.getUserInfo());
-  editProfilePopup.open();
+  profilePopup.setInputValues(userInfo.getUserInfo());
+  profilePopup.open();
 }
 
 function toggleEditAvatarPopup() {
   validationPopupEditAvatarForm.setButtonStatus()
   validationPopupEditAvatarForm.clearErrors()
-  editAvatarPopup.open();
+  avatarPopup.open();
 }
 
 function toggleAddCardPopup() {
   validationPopupAddCardForm.setButtonStatus();
   validationPopupAddCardForm.clearErrors();
-  addCardPopup.open();
+  newCardPopup.open();
 }
 
 function handleLike(cardId, likeButton, likesCounter) {
@@ -96,20 +96,19 @@ function handleLike(cardId, likeButton, likesCounter) {
     api.dislikeCard(cardId)
     .then (res => {
       likesCounter.textContent = res.likes.length;
-      likeButton.classList.remove('card__like-btn_active')
-    .catch (error => console.error)
+      likeButton.classList.remove('card__like-btn_active')})
+    .catch(console.error)
     .finally()
-    })
-  } else {
+  }
+     else {
     api.likeCard(cardId)
     .then (res => {
       likesCounter.textContent = res.likes.length;
-      likeButton.classList.add('card__like-btn_active')
-    .catch (error => console.error)
+      likeButton.classList.add('card__like-btn_active')})
+    .catch(console.error)
     .finally()
-    })
+    }
   }
-}
 
 function addCardRenderer(element) {
   return new Card(element, cardTemplate, imageCardPopup.open, warningPopup.open, handleLike, userId).createNewCard();
@@ -117,46 +116,49 @@ function addCardRenderer(element) {
 
 function handleEditProfileFormSubmit(formValues) {
   api.setUserInfo(formValues)
-  .then (res => {userInfo.setUserInfo(formValues)})
-  .catch (error => console.error)
+  .then(res => {
+    userInfo.setUserInfo(formValues);
+    profilePopup.close();
+  })
+  .catch(console.error)
   .finally(() => {
-    editProfilePopup.setSubmitDefaultText();
-    editProfilePopup.close();
-  }
-  )
-   
+    profilePopup.setSubmitDefaultText()
+  })
 }
 
 function handleEditAvatarFormSubmit(formValues) {
   api.setUserAvatar(formValues)
-  .then (res => {userInfo.setUserInfo(formValues)})
-  .catch (error => console.error)
+  .then(res => {
+    userInfo.setUserInfo(formValues);
+    avatarPopup.close();
+  })
+  .catch(console.error)
   .finally(() => {
-      editAvatarPopup.setSubmitDefaultText();
-      editAvatarPopup.close();
-    }
-    )
-  
+      avatarPopup.setSubmitDefaultText();
+    })
 }
 
 function handleAddCardFormSubmit(formValues) {
   api.addCard(formValues)
-  .then (res => {cardSection.prependItem(res)})
-  .catch (error => console.error)
+  .then(res => {
+    cardSection.prependItem(res);
+    newCardPopup.close();
+  })
+  .catch(console.error)
   .finally(() => {
-    addCardPopup.setSubmitDefaultText();
-    addCardPopup.close();
-  }
-    )
+    newCardPopup.setSubmitDefaultText();
+  })
 }
 
 function handleWarningSubmit(target) {
   api.deleteCard(target._cardId)
-  .then (res => {target.deleteCard()})
-  .catch (error => console.error)
+  .then(res => {
+    target.deleteCard();
+    warningPopup.close();;
+  })
+  .catch(console.error)
   .finally(() => {
     warningPopup.setSubmitDefaultText();
-    warningPopup.close();
   })
 }
 

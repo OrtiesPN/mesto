@@ -5,7 +5,8 @@ export default class FormValidator {
         this._inactiveButtonClass = validationConfig.inactiveButtonClass;
         this._inputErrorClass = validationConfig.inputErrorClass;
         this._errorClass = validationConfig.errorClass;
-        this._form = form
+        this._form = form;
+        this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
         this._formButton = this._form.querySelector(this._submitButtonSelector);
     }
   
@@ -58,7 +59,6 @@ export default class FormValidator {
     }
   
     _setEventListeners() {
-      this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
       this._inputList.forEach((input) => input.addEventListener('input', () => {
         this._checkInputValidity(input);
         this.setButtonStatus(input);
